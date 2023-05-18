@@ -9,21 +9,11 @@ interface IResponse<T = any> {
 }
 
 interface IStoreData {
-  token: string;
-  // user: IApiUserMe;
-  // activeProfile?: IApiUserProfile;
+  token: string
 }
 
-//
-// interface ILoginOptions {
-//   email: string;
-//   password: string;
-// }
-
 const initialState: Partial<IStoreData> = {
-  // user: undefined,
   token: undefined,
-  // activeProfile: undefined,
 };
 
 
@@ -51,27 +41,21 @@ export const AuthSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    // setUser: (state, action: PayloadAction<any>) => {
-    //   state.user = action.payload;
-    // },
+
     setAuthToken: (state: any, action: PayloadAction<IStoreData>) => {
       state.token = action.payload;
     },
-    // removeUser: (state) => {
-    //   state.user = undefined;
-    // },
   },
   extraReducers(builder) {
-    builder.addCase(getCurrentSession.fulfilled, (state: any, action: any) => {
+    builder.addCase(getCurrentSession.fulfilled, (state, action) => {
       if (!state.token && action.payload.success && action.payload.data) {
         state.token = action.payload.data.accessToken;
       }
     });
 
     //
-    builder.addCase(getCurrentSession.rejected, (state:any) => {
+    builder.addCase(getCurrentSession.rejected, (state) => {
       state.token = undefined;
-      state.user = undefined;
     });
 
   }

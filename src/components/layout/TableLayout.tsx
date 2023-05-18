@@ -43,13 +43,25 @@ const TableLayout = ({ table_data }: any) => {
                     {data.id}
                   </th>
                   <td className="px-6 py-4">
-                    Silver
+                    {data['Current Status']}
                   </td>
                   <td className="px-6 py-4">
-                    Laptop
+                    {data['Receive Amount/受取金額']}
                   </td>
                   <td className="px-6 py-4">
-                    $2999
+                    {data['Receive Country/受取国']}
+                  </td>
+                  <td className="px-6 py-4">
+                    {data['Receiver Full Name']}
+                  </td>
+                  <td>
+                    {data['Send Amount/送金額']}
+                  </td>
+                  <td>
+                    {data['Send Country/送金国']}
+                  </td>
+                  <td>
+                    {data['Sender Full Name']}
                   </td>
                 </tr>
               ))
