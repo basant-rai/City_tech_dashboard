@@ -10,9 +10,14 @@ const Dashboard = () => {
   // const accessToken = jsCookie.get('city_token');
 
   const handleTransactions = useCallback(async () => {
-    const { data } = await axiosInstance.post(`${AppConfig.api_url}/transaction-manager/v1/admin/dashboard/search`,
-    )
-    setTableData(data.data)
+    try {
+
+      const { data } = await axiosInstance.post(`${AppConfig.api_url}/transaction-manager/v1/admin/dashboard/search`,
+      )
+      setTableData(data.data)
+    } catch (error: any) {
+      console.log(error)
+    }
 
   }, [])
 

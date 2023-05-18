@@ -2,10 +2,10 @@ import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import jsCookie from "js-cookie";
 
 
-interface IResponse<T = any> {
+interface IResponse {
   success: boolean;
   message: string;
-  data?: T;
+  data?: any;
 }
 
 interface IStoreData {

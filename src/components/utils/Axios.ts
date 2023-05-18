@@ -3,7 +3,6 @@ import { AppConfig } from "../config/App.config";
 // import { store } from "../redux/store"
 import jsCookie from "js-cookie";
 
-
 const axiosInstance = axios.create({
   baseURL: AppConfig.api_url,
   headers: {
@@ -13,13 +12,14 @@ const axiosInstance = axios.create({
 
 // Adding Auhorization header to every request if token is available
 axiosInstance.interceptors.request.use((config) => {
-  // const token = store.getState().auth;
+  // const token = store.getState().auth.token;
+  // console.log(token)
 
-  const accessToken = jsCookie.get('city_token');
+  const token = jsCookie.get('city_token');
 
   //
-  if (config.headers && accessToken) {
-    config.headers.Authorization = `Bearer ${accessToken}`;
+  if (config.headers && token) {
+    config.headers.Authorization = `Bearer ${token}`;
   }
 
   return config;
