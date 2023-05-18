@@ -8,8 +8,9 @@ const AuthLayout = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    accessToken === undefined &&
+    if (accessToken === undefined || !accessToken) {
       navigate('/')
+    }
   }, [accessToken, navigate])
 
   return (

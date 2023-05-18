@@ -7,6 +7,8 @@ import { LoginFormData } from "../components/form-validation/LoginForm";
 import { Toaster, toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import jsCookie from "js-cookie";
+// import { useAppDispatch } from "../hooks/redux";
+// import { setAuthToken } from "../components/redux/slice/AuthSlice";
 
 interface authData {
   data: {
@@ -21,7 +23,8 @@ const Login = () => {
   const [show, setShow] = useState(false);
   const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
-  
+  // const dispatch = useAppDispatch()
+
   const {
     control,
     formState: { errors },
@@ -44,9 +47,12 @@ const Login = () => {
       reset()
       navigate('/dashboard');
       setIsLoading(false)
-      console.log(data)
-      jsCookie.set('city_token',data.data[0].jwt_token);
-      
+      jsCookie.set('city_token', data.data[0].jwt_token);
+      // const token = data.data[0].jwt_token
+      // dispatch(setAuthToken(token))
+      // dispatch(data.data[0].jwt_token)
+
+
     } catch (error: any) {
       setIsLoading(false)
       toast.error(error.response.data.message)
@@ -54,6 +60,8 @@ const Login = () => {
       // throw error
     }
   }, [navigate, reset]);
+
+
 
   return (
     <div className="h-screen flex justify-center items-center">

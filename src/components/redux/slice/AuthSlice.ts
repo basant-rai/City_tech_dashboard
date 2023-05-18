@@ -42,7 +42,7 @@ export const AuthSlice = createSlice({
   initialState,
   reducers: {
 
-    setAuthToken: (state: any, action: PayloadAction<IStoreData>) => {
+    setAuthToken: (state: any, action: PayloadAction<any>) => {
       state.token = action.payload;
     },
   },
